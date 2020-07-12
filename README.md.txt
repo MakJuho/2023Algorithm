@@ -1,3 +1,0 @@
-# ReadyToCodingTest
-
- [x]. ¿ìÁÖÈ£
