@@ -2,7 +2,7 @@ package 카카오인턴;
 
 import java.util.HashSet;
 
-public class 보석쇼평 {
+public class 보석쇼핑 {
 
 	public static void main(String[] args) {
 
