@@ -21,28 +21,20 @@ public class 스킬트리 {
 		
 		for(int i=0; i<skillCnt; i++) {
 			ary = new int[skill_trees[i].length()];
-			Arrays.fill(ary, -1);
-			int tmp = 0;
 			for(int j=0; j<skill_trees[i].length(); j++) {
 				if( map.get(skill_trees[i].charAt(j)) != null ) {
-					ary[j]=map.get(skill_trees[i].charAt(j));
+					ary[j]=map.get(skill_trees[i].charAt(j))+1;
 				}
 			}
-			
+			int cnt=1;
 			boolean isPossible = true;
-			int pre=100;
 			for(int j=0; j<skill_trees[i].length(); j++) {
-				if(ary[j] != -1) {
-					if(pre > ary[j] ) {
-						pre = ary[j];
-						if(ary[j]>=1) {
-							isPossible = false;
-							break;
-						}
-					}
+				if(cnt == ary[j]) {
+					cnt++;
+				}else if(cnt < ary[j]) {
+					isPossible = false;
 				}
 			}
-			
 			
 			if(isPossible) ans++;
 			
