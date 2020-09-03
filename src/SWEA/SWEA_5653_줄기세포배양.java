@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -79,7 +80,7 @@ public class SWEA_5653_줄기세포배양 {
 	public static void main(String[] args) throws IOException {
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		br = new BufferedReader(new FileReader("./res/5653.txt"));
+		br = new BufferedReader(new StringReader(src));
 		
 		int T = Integer.parseInt(br.readLine());
 		System.out.println(T);
