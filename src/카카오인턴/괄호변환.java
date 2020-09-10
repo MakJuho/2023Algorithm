@@ -9,17 +9,19 @@ public class 괄호변환 {
 	
 	public static void main(String[] args) {
 		
-		solution("(()())()");
+		solution("()))((()");
 		
 		return ;
 	}
 
 	public static String solution(String p) {
 		
+		// pattern 비어있을 때
 		if(p.isEmpty()) System.out.println(p);
 		
 		boolean correct = isCorrect(p);
 		
+		// substring은 마지막 무
 		String u = p.substring(0, position);
 		String v = p.substring(position, p.length());
 		
@@ -40,22 +42,23 @@ public class 괄호변환 {
 		return answer;
 	}
 	
+	// 올바른 괄호문자열
 	private static boolean isCorrect(String str) {
 		
 		boolean ret = true;
 		int left = 0, right = 0;
-		Stack<Character> mystack = new Stack<>();
+		Stack<Character> st = new Stack<>();
 		
 		for(int i=0; i<str.length(); i++) {
 			if(str.charAt(i) == '(') {
 				left++;
-				mystack.push('(');
+				st.push('(');
 			}else {
 				right++;
-				if(mystack.isEmpty()) {
+				if(st.isEmpty()) {
 					ret = false;
 				}else {
-					mystack.pop();
+					st.pop();
 				}
 			}
 			if(left == right) {
