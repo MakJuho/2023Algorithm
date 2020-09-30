@@ -45,8 +45,8 @@ public class BOJ_1766_문제집 {
 		
 		// topology sort
 		
-//		PriorityQueue<Integer> q= new PriorityQueue<>();
-		Queue<Integer> q = new LinkedList<>();
+		PriorityQueue<Integer> q= new PriorityQueue<>();
+//		Queue<Integer> q = new LinkedList<>();
 		Queue<Integer> result = new LinkedList<>();
 		
 		// q에 indegrees가 해당 노드가 0이면 다 담아요.

@@ -11,19 +11,24 @@ public class BOJ_16916_부분문자열 {
 
 	public static int[] getPi(String pattern) {
 		
+		// 패턴의 길이
 		int m = pattern.length();
+		// idx
 		int j = 0;
+		
 		
 		char[] p = new char[m];
 		int[] pi = new int[m];
 		
 		p = pattern.toCharArray();
 		
+		// 0이 아닌 1부터
 		for(int i=1; i<m; i++) {
 			while(j>0 && p[i] != p[j]) {
 				j = pi[j-1];
 			}
 			
+			// 문자가 같을 때만 j 증가
 			if(p[i] == p[j])
 				pi[i] = ++j;
 		}
@@ -34,6 +39,7 @@ public class BOJ_16916_부분문자열 {
 	
 	private static ArrayList<Integer> kmp(String str, String pattern){
 		ArrayList<Integer> list = new ArrayList<>();
+		// getPi 함수 만들기
 		int[] pi = getPi(pattern);
 		int n = str.length();
 		int m = pattern.length();
@@ -77,6 +83,6 @@ public class BOJ_16916_부분문자열 {
 		
 	}
 	
-	private static String src ="ABC ABCDAB ABCDABCDABDE\r\n" + 
-			"AB";
+	private static String src ="BABABBAB\r\n" + 
+			"ABBAB";
 }
