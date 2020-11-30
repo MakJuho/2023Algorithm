@@ -28,12 +28,14 @@ public class BOJ_2252_줄세우기 {
         n = Integer.parseInt(tokens.nextToken());
         m = Integer.parseInt(tokens.nextToken());
         
+        // 2차원 list 정의
         List<List<Integer>> list = new ArrayList<List<Integer>>();
 
-        // 노드 개수
+        // 2차원 list 초기화
         for(int i=0; i<n+1; i++) {
         	list.add(new ArrayList<Integer>());
         }
+        
         // 노드 개수
         int[] indegrees = new int[n+1];
         
