@@ -30,7 +30,7 @@ public class Combination_Practice {
 		list.add(index);
 		Combination(list, n, r-1, index+1);
 		list.removeLast();
-		Combination(list, n, r, index+1);
+		Combination(list, n, r, index);
 		
 	}
 }

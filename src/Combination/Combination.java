@@ -1,113 +1,121 @@
 package Combination;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Combination {
+	
+	static char[] arr = {'A', 'B', 'C', 'D'};
+	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-		int n = sc.nextInt();
-		int r = sc.nextInt();
+		System.out.println(Arrays.toString(arr));
 		
-		int arr[] = new int[n];
-		for(int i=1; i<=n; i++) arr[i-1] = i;
-	
-		LinkedList<Integer> list = new LinkedList<>();
-		
-		//순열
-		//4C3 (3! : 6가지)
-		
-		int check[] = new int[n];
-		System.out.println("****순  열****");
-		permutation(list, check, n, r);
-		list.clear();
-		
-		//중복순열
-		System.out.println("****중복순열****");
-		rePermutation(list, n, r);
-		list.clear();
+		LinkedList<Character> list = new LinkedList<>();
 		
 		//조합
 		System.out.println("****조  합****");
-		combination(list, n, r, 0);
+//		combination(list, arr.length, 2, 0);
 		list.clear();
 		
 		//중복조합
 		System.out.println("****중복조합****");
-		reCombination(list, n, r, 0);
+//		reCombination(list, arr.length, 2, 0);
+		
+		//순열
+		//4C3 (3! : 6가지)
+		int check[] = new int[5];
+		System.out.println("****순  열****");
+//		permutation(list, check, arr.length, 2);
+		list.clear();
+		
+		//중복순열
+		System.out.println("****중복순열****");
+		rePermutation(list, arr.length, 2);
+		list.clear();
+		
 
 	}
 	
-    //중복조합
-	private static void reCombination(LinkedList<Integer> list, int n, int r, int index) {
-		if(r == 0){
-			for(int i : list){
-				System.out.print(i+" ");
+	//조합
+	private static void combination(LinkedList<Character> list, int n, int r, int index) {
+		if(r == 0) {
+			for(char a: list) {
+				System.out.print(a + " ");
 			}
 			System.out.println();
 			return;
 		}
-		if(index == n) return;
+		else if(index == n) return;
 		
-		list.add(index);
+		list.add(arr[index]);
+		combination(list,n,r-1,index+1); // 하나를 선택하고
+		list.removeLast();
+		combination(list,n,r,index+1); // 하나를 뺀다.
+		
+	}
+	
+	/**
+	 * 선택을 해도 그자리에서 시작하면 된다.
+	 */
+	private static void reCombination(LinkedList<Character> list, int n, int r, int index) {
+		if(r == 0) {
+			for(char a: list) {
+				System.out.print(a + " ");
+			}
+			System.out.println();
+			return;
+		}
+		if(n == index) return;
+		
+		list.add(arr[index]);
 		reCombination(list, n, r-1, index);
 		list.removeLast();
 		reCombination(list, n, r, index+1);
-	}
-
-	//조합
-	private static void combination(LinkedList<Integer> list, int n, int r, int index) {
-		if(r == 0){//r이 0이면 다 뽑았다는 뜻
-			for(int i : list){
-				System.out.print(i+" ");
-			}
-			System.out.println();
-			return;
-		}
-		if(index == n) return; //다 탐색했으면 종료..
-		
-		list.add(index);
-		combination(list, n, r-1, index+1);//뽑았으니 ,r-1
-		list.removeLast();
-		combination(list, n, r, index+1);//안뽑았으니, r
-	}
-
-	//중복순열
-	private static void rePermutation(LinkedList<Integer> list, int n, int r) {
-		if(list.size() == r){
-			for(int i : list){
-				System.out.print(i+" ");
-			}
-			System.out.println();
-			return;
-		}
-		for(int i=0; i<n; i++){
-			list.add(i);
-			rePermutation(list, n, r);
-			list.removeLast();//해당 넘버를 다시 제거 (즉,뽑지 않고 다음 번호 뽑기위함)
-		
-		}
 		
 	}
-
+	
 	//순열
-	private static void permutation(LinkedList<Integer> list, int[] check, int n, int r) {
-		if(list.size() == r){
-			for(int i : list){
-				System.out.print(i+" ");
+	private static void permutation(LinkedList<Character> list, int[] check, int n, int r) {
+		if(list.size() == r) {
+			for(char a: list) {
+				System.out.print(a+" ");
 			}
 			System.out.println();
-			return;
+			return ;
 		}
-		for(int i=0; i<n; i++){//**중복 순열과 다른 점
-			if(check[i] == 0){//자기자신을 못뽑게 해야지 중복이 안됨(이미 뽑은 것은 뽑지 않도록 체크)
-				check[i] = 1;//자기자신을 못뽑게 해야지 중복이 안됨
-				list.add(i);
-				permutation(list, check, n, r);
-				list.removeLast();//해당 넘버를 다시 제거 (즉,뽑지 않고 다음 번호 뽑기위함)
+
+		for(int i=0; i<n; i++) {
+			if(check[i] == 0) {
+				check[i] = 1;
+				list.add(arr[i]);
+				permutation(list,check,n,r);
+				list.removeLast();
 				check[i] = 0;
 			}
 		}
+		
+		
+		
 	}
+	//중복순열
+	private static void rePermutation(LinkedList<Character> list, int n, int r) {
+		if(list.size() == r) {
+			for(char a: list) {
+				System.out.print(a+" ");
+			}
+			System.out.println();
+			return ;
+		}
+		
+		for(int i=0; i<n; i++) {
+			list.add(arr[i]);
+			rePermutation(list, n, r);
+			list.removeLast();
+		}
+		
+	}
+
 }
