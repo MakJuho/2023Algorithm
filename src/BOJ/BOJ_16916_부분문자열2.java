@@ -21,7 +21,7 @@ public class BOJ_16916_부분문자열2 {
 	
 	private static void kmp(String line, String pattern) {
 		//getPi함수 구하기
-		getPi();
+//		getPi();
 		
 	}
 
