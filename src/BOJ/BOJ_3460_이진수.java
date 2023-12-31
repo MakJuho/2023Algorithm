@@ -5,8 +5,8 @@ import java.io.*;
 
 public class BOJ_3460_이진수 {
 
-    private int T;
-    private int num;
+    private static int T;
+    private static int num;
     public static void main(String[] args) throws Exception {
 
         InputStream is = new ByteArrayInputStream(src.getBytes());
@@ -51,7 +51,7 @@ public class BOJ_3460_이진수 {
 
     }
 
-    private final String src = "2\n" +
+    private static final String src = "2\n" +
             "13\n" +
             "30";
 }
